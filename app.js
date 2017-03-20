@@ -5,12 +5,11 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
-const API_KEY = 'ADD_API_KEY_HERE';
+const API_KEY = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI1OGM1ZjUwZTAzNjBkNjAwMGM0NTdlMTEiLCJhdXRoIjoiUk9MRV9FTlZJUk9OTUVOVCJ9.nv6xO-_Tb4wFmll1njK4SD6gBTyx4SngOHPSKtU0LHTtX9yPjFKWEZB4bPvYzI1k-Zna0E77Fd15wD6QnFin2g';
 
 const featureflowExpress = require('./featureflow')(API_KEY);
 
 const index = require('./routes/index');
-const users = require('./routes/users');
 
 const app = express();
 
@@ -30,7 +29,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(featureflowExpress);
 
 app.use('/', index);
-app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

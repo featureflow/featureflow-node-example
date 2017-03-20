@@ -4,7 +4,7 @@ const Featureflow = promisify('featureflow-node-sdk');
 module.exports = function(API_KEY){
 
   const withFeatures = [{
-    key: 'hello',
+    key: 'node-demo-feature',
     failoverVariant:'off'
   }];
 
@@ -13,6 +13,7 @@ module.exports = function(API_KEY){
     withFeatures: withFeatures
   }).then(featureflow=>{
     console.log('Featureflow initialised');
+    return featureflow;
   }).catch(err=>{
     console.log(err);
   });
@@ -24,7 +25,6 @@ module.exports = function(API_KEY){
         key: req.query.key,
         values: req.query
       };
-      console.log(JSON.stringify(req.ffContext, true, 4));
       next();
     }).catch(err => {
       next(err);

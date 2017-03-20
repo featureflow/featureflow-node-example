@@ -3,8 +3,8 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  if (req.featureflow.evaluate('example-feature-2', req.ffContext).isOn()){
-    res.render('indexbeta', { title: 'FF BETA' });
+  if (req.featureflow.evaluate('node-demo-feature', req.ffContext).isOn()){
+    return res.render('indexExampleFeature', { title: 'FF Example Feature!' });
   }
   res.render('index', { title: 'FF' });
 });
