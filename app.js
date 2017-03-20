@@ -5,8 +5,9 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
+const API_KEY = 'ADD_API_KEY_HERE';
 
-const featureflowExpress = require('./featureflow');
+const featureflowExpress = require('./featureflow')(API_KEY);
 
 const index = require('./routes/index');
 const users = require('./routes/users');
