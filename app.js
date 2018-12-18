@@ -4,10 +4,10 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const Featureflow = require('featureflow-node-sdk');
 
-const API_KEY = 'ADD_API_KEY_HERE';
+const API_KEY = 'srv-env-ADD_API_KEY_HERE';
 
-const featureflowExpress = require('./featureflow')(API_KEY);
 
 const index = require('./routes/index');
 
@@ -26,6 +26,30 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+const config = {
+    apiKey: API_KEY,
+    withFeatures: [
+        {
+            key: 'node-demo-feature',
+            failoverVariant:'off'
+        }
+    ]
+};
+
+let userMiddleware = function (req, res, next) {
+    req.ffUser = new Featureflow.UserBuilder("jimmy@example.com")
+        .withAttribute("firstName", "Jimmy")
+        .withAttribute("lastName", "Hendrix")
+        .withAttributes("hobbies", ["swimming", "skiing", "rowing"])
+        .withAttribute("age", 32)
+        .withAttribute("signupDate", new Date(2017, 10, 28))
+        .withAttribute("ip", req.ip)
+        .build();
+    next();
+};
+app.use(userMiddleware);
+
+let featureflowExpress = new Featureflow.ExpressClient(config);
 app.use(featureflowExpress);
 
 app.use('/', index);
