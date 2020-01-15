@@ -8,13 +8,18 @@ Get your Featureflow account at [featureflow.io](http://www.featureflow.io)
 
 ##Usage
  
+In ```'./app.js'``` replace with your _Server Environment SDK Key_ from the API Keys link in featureflow.io - (the one starting 'srv-env-')
 ```js
-// in './app.js'
-// replace with your Server Key from featureflow.io - the one starting 'srv-env-'
 const API_KEY = 'srv-env-123';
 ```
 
-Run the node app example app and browse to the standard http://localhost:3000/
+Run the node example app and browse to the standard http://localhost:3000/
+
+```bash
+yarn install
+yarn start
+``` 
+or debug 'bin/www' in your favourite IDE
  
 ```app.js``` shows us creating a basic middleware function to define the featureflow client at request time.
 
