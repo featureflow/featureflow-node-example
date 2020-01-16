@@ -28,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const config = {
     apiKey: API_KEY,
+    interval: 5, //the polling interval in seconds
     withFeatures: [
         {
             key: 'node-demo-feature',
