@@ -1078,15 +1078,16 @@ fast-json-stable-stringify@^2.0.0:
   resolved "https://registry.yarnpkg.com/fast-json-stable-stringify/-/fast-json-stable-stringify-2.1.0.tgz#874bf69c6f404c2b5d99c481341399fd55892633"
   integrity sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==
 
-featureflow-node-sdk@~0.6.7:
-  version "0.6.7"
-  resolved "https://registry.yarnpkg.com/featureflow-node-sdk/-/featureflow-node-sdk-0.6.7.tgz#8358e5b5da7a37c82d525d4d062954a3a111ebd9"
-  integrity sha512-50IQg/SjDbUc/1KL8FjLQ0dYLWly20dfqPFqmHFnZY3nUkSFzOEVSUWzwrAET8TX2WyGKdqY+UgBvtQp/DCurA==
+featureflow-node-sdk@^0.6.16:
+  version "0.6.16"
+  resolved "https://registry.yarnpkg.com/featureflow-node-sdk/-/featureflow-node-sdk-0.6.16.tgz#b5409dc94818287b1fef430c8a88f97210ca6205"
+  integrity sha512-V5DWQhcilSLLObar6GHn1pf66HRGnaTt8zA2t0jlgcmyFeDVIN5Q5/xRYt09gHxjAsrJrWhGsNnfhxBtwaN3Qw==
   dependencies:
     big-integer "^1.6.17"
     debug "^2.6.2"
     request "^2.88.0"
     sha1-hex "^1.0.0"
+    typescript "^4.8.2"
 
 filename-regex@^2.0.0:
   version "2.0.0"
@@ -2256,6 +2257,11 @@ type-is@~1.6.17, type-is@~1.6.18:
   dependencies:
     media-typer "0.3.0"
     mime-types "~2.1.24"
+
+typescript@^4.8.2:
+  version "4.9.5"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.5.tgz#095979f9bcc0d09da324d58d03ce8f8374cbe65a"
+  integrity sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==
 
 uid-number@~0.0.6:
   version "0.0.6"
