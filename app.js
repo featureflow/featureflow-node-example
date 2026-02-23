@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const Featureflow = require('featureflow-node-sdk');
 
-const API_KEY = process.env.FEATUREFLOW_API_KEY || 'srv-env-ADD_API_KEY_HERE';
+const API_KEY = process.env.FEATUREFLOW_API_KEY || 'sdk-srv-env-ADD_API_KEY_HERE';
 
 // Singleton client - initialised once, shared across all requests
 const client = new Featureflow.Client({
@@ -30,7 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Attach featureflow client and current user to every request
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
     req.featureflow = client;
     req.ffUser = new Featureflow.UserBuilder('jimmy@example.com')
         .withAttribute('firstName', 'Jimmy')
@@ -46,14 +46,14 @@ app.use(function (req, res, next) {
 app.use('/', index);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
+app.use((req, res, next) => {
+    const err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use((err, req, res, next) => {
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
     res.status(err.status || 500);
