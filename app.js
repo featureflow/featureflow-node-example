@@ -5,13 +5,20 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const Featureflow = require('featureflow-node-sdk');
 
-const API_KEY = process.env.FEATUREFLOW_API_KEY || 'sdk-srv-env-ADD_API_KEY_HERE';
+const API_KEY = process.env.FEATUREFLOW_API_KEY;
+
+if (!API_KEY) {
+    console.warn(
+        'FEATUREFLOW_API_KEY is not set - copy .env.example to .env and add your Server ' +
+        'Environment SDK Key (starts with srv-env-).'
+    );
+}
 
 // Singleton client - initialised once, shared across all requests
 const client = new Featureflow.Client({
     apiKey: API_KEY,
     withFeatures: [
-        { key: 'node-demo-feature', failoverVariant: 'off' }
+        { key: 'example-feature', failoverVariant: 'off' }
     ]
 });
 
